@@ -7,6 +7,7 @@ import com.stackroute.searchmovie.services.SearchMovieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.GeneratedValue;
@@ -19,11 +20,13 @@ import java.util.List;
 public class SearchMovieController {
     SearchMovieService service;
     FavouriteService favService;
+    KafkaTemplate kafkaTemplate;
 
     @Autowired
-    SearchMovieController(SearchMovieService service, FavouriteService favService) {
+    SearchMovieController(SearchMovieService service, FavouriteService favService, KafkaTemplate kafkaTemplate) {
             this.service = service;
             this.favService = favService;
+            this.kafkaTemplate = kafkaTemplate;
     }
 
     @GetMapping("/ping")
@@ -41,6 +44,7 @@ public class SearchMovieController {
     @PostMapping("/favourite")
     public ResponseEntity<?> addMovieToFavourites(@RequestBody SearchResultMovie movie) {
         System.out.println(movie);
+        kafkaTemplate.send("favourite_movie", movie);
         return new ResponseEntity<SearchResultMovie>(favService.saveFavouriteMovie(movie), HttpStatus.CREATED);
 
     }

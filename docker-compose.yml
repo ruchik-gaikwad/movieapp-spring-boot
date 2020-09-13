@@ -1,0 +1,12 @@
+version: '2'
+services:
+  zookeeper:
+    image: wurstmeister/zookeeper
+    network_mode: host
+  kafka:
+    image : wurstmeister/kafka
+    network_mode: host
+    environment:
+      KAFKA_ADVERTISED_HOST_NAME: localhost
+      KAFKA_ZOOKEEPER_CONNECT: localhost:2181
+

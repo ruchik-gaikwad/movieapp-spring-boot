@@ -25,6 +25,7 @@
 
   <modules>
     <module>searchmovie</module>
+    <module>favouriteMovieService</module>
   </modules>
 
   <dependencies>

@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/favouriteMovieService/favouriteMovieService.iml" filepath="$PROJECT_DIR$/favouriteMovieService/favouriteMovieService.iml" />
       <module fileurl="file://$PROJECT_DIR$/movieproject.iml" filepath="$PROJECT_DIR$/movieproject.iml" />
       <module fileurl="file://$PROJECT_DIR$/searchmovie/searchmovie.iml" filepath="$PROJECT_DIR$/searchmovie/searchmovie.iml" />
     </modules>
